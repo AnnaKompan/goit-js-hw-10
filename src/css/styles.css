@@ -18,3 +18,43 @@ body {
   max-width: 320px;
   margin-bottom: 16px;
 }
+
+.country__list-items {
+  list-style: none;
+}
+
+.country-item {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.country-name {
+  font-weight: 700;
+  font-size: 36px;
+  letter-spacing: 0.03em;
+  margin-bottom: 10px;
+}
+
+.country-capital {
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.03em;
+  margin-bottom: 10px;
+}
+
+.country-population {
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.03em;
+  margin-bottom: 10px;
+}
+
+.country-languages {
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.03em;
+  margin-bottom: 10px;
+}
