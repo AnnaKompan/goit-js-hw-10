@@ -21,45 +21,43 @@ function onInput(e) {
       clearMarkup();
 
       if (data.length === 1) {
-        const listMarkup = data
-          .map(({ name, flags }) => {
-            return `<li class="country-item">
-    <img src=${flags.svg} alt="country-img" width='30'>
-    <h1 class="country-name">${name.official}</h1>
-  </li>`;
-          })
-          .join('');
-
-        const infoMarkup = data
-          .map(({ capital, population, languages }) => [
-            `<ul class="country__list-items">
-            <li class="country-capital"> <b>Capital:</b> ${capital}</li>
-            <li class="country-population"> <b>Population:</b> ${population}</li>
-            <li class="country-languages"> <b>Languages:</b> ${Object.values(
-              languages
-            )}</li>
-          </ul>`,
-          ])
-          .join('');
-
-        countryList.innerHTML = listMarkup;
-        countryInfo.innerHTML = infoMarkup;
+        countryList.innerHTML = makeListMarkup(data);
+        countryInfo.innerHTML = makeInfoMarkup(data);
       } else if (data.length > 10) {
         clearMarkup();
         alertInfo();
       } else {
-        const listMarkup = data
-          .map(({ name, flags }) => {
-            return `<li class="country-item">
-    <img src=${flags.svg} alt="country-img" width='30'>
-    <h1 class="country-name">${name.official}</h1>
-  </li>`;
-          })
-          .join('');
-        countryList.innerHTML = listMarkup;
+        countryList.innerHTML = makeListMarkup(data);
       }
     })
     .catch(alertFailure());
+}
+
+function makeListMarkup(data) {
+  const listMarkup = data
+    .map(({ name, flags }) => {
+      return `<li class="country-item">
+    <img src=${flags.svg} alt="country-img" width='30'>
+    <h1 class="country-name">${name.official}</h1>
+  </li>`;
+    })
+    .join('');
+  return listMarkup;
+}
+
+function makeInfoMarkup(data) {
+  const infoMarkup = data
+    .map(({ capital, population, languages }) => [
+      `<ul class="country__list-items">
+    <li class="country-capital"> <b>Capital:</b> ${capital}</li>
+    <li class="country-population"> <b>Population:</b> ${population}</li>
+    <li class="country-languages"> <b>Languages:</b> ${Object.values(
+      languages
+    )}</li>
+  </ul>`,
+    ])
+    .join('');
+  return infoMarkup;
 }
 
 function clearMarkup() {
